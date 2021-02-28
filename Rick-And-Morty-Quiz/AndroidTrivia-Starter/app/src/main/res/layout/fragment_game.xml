@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2018, The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.navigation.InGame"
+    android:configChanges="orientation|screenSize|screenLayout|keyboardHidden">
+
+    <data>
+
+        <variable
+            name="gameViewModel"
+            type="com.example.android.navigation.GameViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/questionImage"
+                android:layout_width="414dp"
+                android:layout_height="210dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@+id/questionText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread"
+                app:srcCompat="@drawable/rnm02" />
+
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/question_horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginEnd="@dimen/question_horizontal_margin"
+                android:fontFamily="sans-serif"
+                android:text=""
+                android:textSize="@dimen/question_text_size"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionImage" />
+
+            <RadioGroup
+                android:id="@+id/questionRadioGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/question_horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginEnd="@dimen/question_horizontal_margin"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+            <Button
+                android:id="@+id/prevBtn"
+                android:layout_width="70dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginBottom="208dp"
+                android:background="@drawable/ic_baseline_navigate_before_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/trueBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+            <Button
+                android:id="@+id/nextBtn"
+                android:layout_width="70dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="208dp"
+                android:background="@drawable/ic_baseline_navigate_next_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+            <RadioButton
+                android:id="@+id/trueBtn"
+                android:layout_width="111dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginBottom="208dp"
+                android:text="@string/trueText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+            <RadioButton
+                android:id="@+id/falseBtn"
+                android:layout_width="111dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="208dp"
+                android:text="@string/falseText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.421"
+                app:layout_constraintStart_toEndOf="@+id/trueBtn"
+                app:layout_constraintTop_toBottomOf="@+id/questionText"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="343dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="64dp"
+                android:text="@string/scoreText"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.472"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.962" />
+
+            <ImageView
+                android:id="@+id/correctImage"
+                android:layout_width="136dp"
+                android:layout_height="129dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/right_24" />
+
+            <ImageView
+                android:id="@+id/wrongImage"
+                android:layout_width="138dp"
+                android:layout_height="131dp"
+                app:srcCompat="@drawable/wrong_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
